@@ -3,10 +3,14 @@ class Tooltip extends HTMLElement {
         console.log('Tooltip::constructor');
         super();
         this._tooltipContainer;
+        this._tooltipText = 'Some dummy tooltip text.';
     }
     
     connectedCallback() {
         console.log('Tooltip::connectedCallback');
+        if (this.hasAttribute('text')) {
+            this._tooltipText = this.getAttribute('text');
+        }
         const tooltipIcon = document.createElement('span');
         tooltipIcon.textContent = ' (?)';
         tooltipIcon.addEventListener('mouseenter', this._showTooltip.bind(this));
@@ -16,7 +20,7 @@ class Tooltip extends HTMLElement {
 
     _showTooltip() {
         this._tooltipContainer = document.createElement('div');
-        this._tooltipContainer.textContent = 'This is the tooltip text';
+        this._tooltipContainer.textContent = this._tooltipText;
         this.appendChild(this._tooltipContainer);
         
     }
