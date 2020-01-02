@@ -10,15 +10,26 @@
         div {
             border: 1px solid cyan;
         }
+        .highlight {
+            background-color: orange;
+        }
     </style>
 
     <script src="./tooltip.js"></script>
     <script src="./confirm-link.js"></script>
 </head>
 <body>
-    <p><my-tooltip text="Web components is a set of standars.">Web Components</my-tooltip> are awsome!</p>
+    <p>
+        <my-tooltip text="Web components is a set of standars.">
+            <span class="highlight">Web Components</span>
+        </my-tooltip>
+        are awsome!
+    </p>
+
     <my-tooltip></my-tooltip>
+
     <div>This not get the web components styles!</div>
+
     <a is="my-confirm-link" href="https://www.google.com/">Google</a>
 </body>
 </html>
